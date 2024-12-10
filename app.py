@@ -12,11 +12,12 @@ def register():
     client_id = data.get("id")
     ip = data.get("ip")
     port = data.get("port")
+    time = data.get("time")
 
     if not client_id or not ip or not port:
         return jsonify({"error": "Missing id, ip, or port"}), 400
 
-    clients[client_id] = {"ip": ip, "port": port}
+    clients[client_id] = {"ip": ip, "port": port, "time": time}
     return jsonify({"message": f"Client {client_id} registered successfully"})
 
 
