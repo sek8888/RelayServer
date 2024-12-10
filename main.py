@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import threading
 
 app = Flask(__name__)
 
@@ -30,15 +29,7 @@ def get_client(client_id):
     return jsonify(client)
 
 
-@app.route("/client", methods=["GET"])
+@app.route("/clients", methods=["GET"])
 def all_clients():
     """Retrieve all registered clients."""
     return jsonify(clients)
-
-
-def start_server():
-    app.run(host="0.0.0.0", port=5000, debug=False, threaded=True)
-
-
-if __name__ == "__main__":
-    threading.Thread(target=start_server).start()
